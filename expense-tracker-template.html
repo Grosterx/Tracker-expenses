@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер расходов</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-4 mb-4">
+            <div class="container">
+                <!-- Бренд (твой заголовок) -->
+                <a class="navbar-brand text-center mb-0" href="#">
+                    <i class="bi bi-wallet2"></i> Трекер расходов
+                </a>
+                
+                <!-- Кнопка-гамбургер для мобильных -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Меню ссылок -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#add-expense">Добавить расход</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#view-expenses">Просмотреть расходы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#statistics">Статистика</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Форма для добавления расхода (адаптирована под JS) -->
+        <section class="mb-5" id="add-expense">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Добавить новый расход</h5>
+                </div>
+                <div class="card-body">
+                    <form id="expenseForm"> <!-- Добавлен ID для JS -->
+                        <div class="mb-3">
+                            <label for="descriptionInput" class="form-label">Описание расхода</label>
+                            <input type="text" class="form-control" id="descriptionInput" placeholder="Например: Обед в кафе" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amountInput" class="form-label">Сумма (руб.)</label>
+                            <input type="number" class="form-control" id="amountInput" placeholder="Например: 500" min="0" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categorySelect" class="form-label">Категория</label>
+                            <select class="form-select" id="categorySelect" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="Еда">Еда</option>
+                                <option value="Транспорт">Транспорт</option>
+                                <option value="Развлечения">Развлечения</option>
+                                <option value="Здоровье">Здоровье</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить расход</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Статистика -->
+        <section class="mb-4" id="statistics">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Общая сумма расходов</h5>
+                            <h2 class="text-primary" id="totalAmount">0 руб.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Фильтры по категориям (адаптированы под JS) -->
+        <section class="mb-4">
+            <h5>Фильтр по категориям:</h5>
+            <div class="btn-group flex-wrap">
+                <button type="button" class="btn btn-outline-primary" data-category="all">Все</button>
+                <button type="button" class="btn btn-outline-primary" data-category="Еда">Еда</button>
+                <button type="button" class="btn btn-outline-primary" data-category="Транспорт">Транспорт</button>
+                <button type="button" class="btn btn-outline-primary" data-category="Развлечения">Развлечения</button>
+                <button type="button" class="btn btn-outline-primary" data-category="Здоровье">Здоровье</button>
+                <button type="button" class="btn btn-outline-primary" data-category="Другое">Другое</button>
+            </div>
+        </section>
+
+        <!-- Контейнер для списка расходов -->
+        <section id="view-expenses">
+            <h5 class="mb-3">Список расходов:</h5>
+            <div id="expensesList" class="row">
+                <!-- Карточки расходов будут создаваться через JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
